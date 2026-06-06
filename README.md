@@ -20,14 +20,26 @@ Both patcher and mod use same 3-column CSV format([RFC 4180](https://www.rfc-edi
 
 ### UnityEngine.Localization.Tables.StringTable
 
-This is a standard way of providing localization in Unity. Each locale provides set of StringTables which are then dynamically loaded on demand during gameplay.
-For these strings, `tableName` corresponds to StringTable's name(`Object.name` not `LocalizationTable.TableCollectionName`), `Key` to `TableEntry.Key`
-and `Value` to `TableEntry.LocalizedValue`.
+This is a standard way of providing localization for text in Unity. Each locale provides set of StringTables which are then dynamically loaded on demand during gameplay.
+For these strings, `TableName` corresponds to StringTable's name(`Object.name` not `LocalizationTable.TableCollectionName`), `Key` to `TableEntry.Key`
+and `Text` to `TableEntry.LocalizedValue`.
 
 For example:
 ```csv
 TableName,Key,Text
 Text_en,UITitle/Load,LOAD DREAM
+```
+
+### UnityEngine.Localization.Tables.AssetTable
+
+Similarly to StringTable, are standard means of localizing assets. Each locale provides set of AssetTables which are then dynamically loaded on demand during gameplay.
+For these strings, `TableName` corresponds to AssetTable's name(`Object.name` not `LocalizationTable.TableCollectionName`), `Key` to `TableEntry.Key`
+and `Text` to an image file relative to `LocalePatches` folder.
+
+For example:
+```csv
+TableName,Key,Text
+Sprite_en,Logo,MyPatch/NewLogo.png
 ```
 
 ### .lang JSON TextAssets
@@ -46,7 +58,7 @@ The basic schema is like this:
 }
 ```
 
-For these strings, `tableName` corresponds to TextAsset's name, `Key` to `<language>/<line_no>` and `Value` to new text.
+For these strings, `TableName` corresponds to TextAsset's name, `Key` to `<language>/<line_no>` and `Text` to the new text.
 
 For example:
 ```csv
